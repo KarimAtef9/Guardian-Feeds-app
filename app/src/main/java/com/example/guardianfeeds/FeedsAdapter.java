@@ -1,7 +1,6 @@
 package com.example.guardianfeeds;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +24,14 @@ public class FeedsAdapter extends ArrayAdapter<Feed> {
                     R.layout.feeds_list, parent, false);
         }
 
+        TextView author = listItemView.findViewById(R.id.author);
         TextView category = listItemView.findViewById(R.id.category);
         TextView title = listItemView.findViewById(R.id.title);
         TextView date = listItemView.findViewById(R.id.date);
 
         Feed currentFeed = feeds.get(position);
 
+        author.setText(currentFeed.getAuthor());
         category.setText(currentFeed.getCategory());
         title.setText(currentFeed.getTitle());
         date.setText(currentFeed.getDate());

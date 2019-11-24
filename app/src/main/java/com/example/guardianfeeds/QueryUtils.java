@@ -102,13 +102,15 @@ public class QueryUtils {
 
             for (int i = 0; i < results.length(); i++) {
                 JSONObject currentFeed = results.getJSONObject(i);
+                //TODO edit the author key
+                String author = currentFeed.getString("webTitle");
                 String title = currentFeed.getString("webTitle");
                 String category = currentFeed.getString("sectionName");
                 String date = currentFeed.getString("webPublicationDate");
                 date = date.substring(0,10);
                 String url = currentFeed.getString("webUrl");
                 Log.v("QueryUtils.java", "current feed title is : "+ title);
-                feeds.add(new Feed(title, category, date, url));
+                feeds.add(new Feed(author, title, category, date, url));
             }
 
 
