@@ -121,17 +121,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     private String makeUrl() {
-        String url = "http://content.guardianapis.com/search?q=";
+        String url = "http://content.guardianapis.com/search?";
         EditText searchTitle = findViewById(R.id.content_search);
         EditText searchCategory = findViewById(R.id.category_search);
 
-        if (searchTitle.getText() != null && searchTitle.getText().length() > 0) {
-            String text = String.valueOf(searchTitle.getText()).replaceAll(" ", "+");
-            url += text;
-        }
-
         Uri baseUri = Uri.parse(url);
         Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        if (searchTitle.getText() != null && searchTitle.getText().length() > 0) {
+            String text = String.valueOf(searchTitle.getText()).replaceAll(" ", "+");
+            uriBuilder.appendQueryParameter("q", text);
+        }
 
         if (searchCategory.getText() != null && searchCategory.getText().length() > 0) {
             String text = String.valueOf(searchCategory.getText()).replaceAll(" ", "+");

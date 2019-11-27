@@ -14,8 +14,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-public class QueryUtils {
-    public static final String LOG_TAG = QueryUtils.class.getSimpleName();
+class QueryUtils {
+    private static final String LOG_TAG = QueryUtils.class.getSimpleName();
     private QueryUtils() {
 
     }
@@ -84,7 +84,7 @@ public class QueryUtils {
     }
 
     // return list of new feeds
-    public static ArrayList<Feed> extractFeeds(String jsonUrl) {
+    static ArrayList<Feed> extractFeeds(String jsonUrl) {
         ArrayList<Feed> feeds = new ArrayList<>();
         String jsonResponse = null;
         try {
@@ -102,8 +102,10 @@ public class QueryUtils {
 
             for (int i = 0; i < results.length(); i++) {
                 JSONObject currentFeed = results.getJSONObject(i);
-                //TODO edit the author key
-                String author = currentFeed.getString("webTitle");
+                String author = "";
+                if (currentFeed.has("author")) {
+                    author = currentFeed.getString("author");
+                }
                 String title = currentFeed.getString("webTitle");
                 String category = currentFeed.getString("sectionName");
                 String date = currentFeed.getString("webPublicationDate");
