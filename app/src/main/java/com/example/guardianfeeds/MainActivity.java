@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity
             String text = String.valueOf(searchCategory.getText()).replaceAll(" ", "+");
             uriBuilder.appendQueryParameter("tag", text+"/"+text);
         }
-        uriBuilder.appendQueryParameter("api-key","test");
+        uriBuilder.appendQueryParameter("api-key","b10b89cb-f25b-41cf-88d5-636839d93e64");
         url = uriBuilder.toString();
         Log.i("MainActivity.java", "from makeUrl method the new url is : " + url);
         return url;
