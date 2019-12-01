@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         if (searchTitle.getText() != null && searchTitle.getText().length() > 0) {
-            String text = String.valueOf(searchTitle.getText()).replaceAll(" ", "+");
+            String text = String.valueOf(searchTitle.getText());
             uriBuilder.appendQueryParameter("q", text);
         }
 
@@ -137,6 +137,8 @@ public class MainActivity extends AppCompatActivity
             String text = String.valueOf(searchCategory.getText()).replaceAll(" ", "+");
             uriBuilder.appendQueryParameter("tag", text+"/"+text);
         }
+        // to get author in results
+        uriBuilder.appendQueryParameter("show-tags","contributor");
         uriBuilder.appendQueryParameter("api-key","b10b89cb-f25b-41cf-88d5-636839d93e64");
         url = uriBuilder.toString();
         Log.i("MainActivity.java", "from makeUrl method the new url is : " + url);

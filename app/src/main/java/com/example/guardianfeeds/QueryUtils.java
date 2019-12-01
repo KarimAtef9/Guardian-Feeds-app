@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 class QueryUtils {
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
+    private static final int RESPONSE_CODE_OK = 200;
     private QueryUtils() {
 
     }
@@ -64,7 +65,7 @@ class QueryUtils {
 
             // If the request was successful (response code 200),
             // then read the input stream and parse the response.
-            if (urlConnection.getResponseCode() == 200) {
+            if (urlConnection.getResponseCode() == RESPONSE_CODE_OK) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
@@ -102,10 +103,21 @@ class QueryUtils {
 
             for (int i = 0; i < results.length(); i++) {
                 JSONObject currentFeed = results.getJSONObject(i);
+
+                JSONArray tagsArray = currentFeed.getJSONArray("tags");
+                // for getting author
                 String author = "";
-                if (currentFeed.has("author")) {
-                    author = currentFeed.getString("author");
+                if (tagsArray.length() != 0) {
+                    JSONObject currentTag = tagsArray.getJSONObject(0);
+                    if (currentTag.has("firstName")) {
+                        author = currentTag.getString("firstName");
+                        if (currentTag.has("lastName")) {
+                            author += " ";
+                            author += currentTag.getString("lastName");
+                        }
+                    }
                 }
+
                 String title = currentFeed.getString("webTitle");
                 String category = currentFeed.getString("sectionName");
                 String date = currentFeed.getString("webPublicationDate");

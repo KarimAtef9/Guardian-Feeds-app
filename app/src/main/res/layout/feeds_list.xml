@@ -5,10 +5,10 @@
     android:layout_height="108dp"
     android:id="@+id/list"
     android:orientation="horizontal"
-    android:paddingEnd="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingStart="16dp">
+    android:paddingEnd="@dimen/pad_dim"
+    android:paddingLeft="@dimen/pad_dim"
+    android:paddingRight="@dimen/pad_dim"
+    android:paddingStart="@dimen/pad_dim">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -73,7 +73,7 @@
         android:textSize="12sp"
         tools:text="Mar 6, 2010"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp" />
+        android:layout_marginLeft="@dimen/margin_dim"
+        android:layout_marginStart="@dimen/margin_dim" />
 
 </LinearLayout>
