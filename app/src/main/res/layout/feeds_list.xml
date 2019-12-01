@@ -33,7 +33,8 @@
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp"
-                tools:text="Category" />
+                tools:text="Category"
+                tools:targetApi="jelly_bean" />
 
             <TextView
                 android:id="@+id/author"
@@ -47,7 +48,8 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp"
 
-                tools:text="Author" />
+                tools:text="Author"
+                tools:targetApi="jelly_bean" />
         </LinearLayout>
 
 

@@ -120,8 +120,12 @@ class QueryUtils {
 
                 String title = currentFeed.getString("webTitle");
                 String category = currentFeed.getString("sectionName");
-                String date = currentFeed.getString("webPublicationDate");
-                date = date.substring(0,10);
+                String date = "";
+                if (currentFeed.has("webPublicationDate")) {
+                    date = currentFeed.getString("webPublicationDate");
+                    date = date.substring(0,10);
+                }
+
                 String url = currentFeed.getString("webUrl");
                 Log.v("QueryUtils.java", "current feed title is : "+ title);
                 feeds.add(new Feed(author, title, category, date, url));
